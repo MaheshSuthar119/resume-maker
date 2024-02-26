@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useNavigate  } from 'react-router-dom';
 import style from'./Nav.module.css'
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword} from 'firebase/auth'
 import {auth} from '../../Firebase'
 import { toast } from 'react-toastify';
 
 function Navbar() {
+  const navigate = useNavigate ();
   const notify = () => toast.success();
 
   const [action, setAction] = useState("Sign Up");
@@ -23,6 +25,7 @@ function Navbar() {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         console.log(userCredential);
         toastMessage = "Welcome"; // Success message for sign-up
+        navigate('/Home'); // Navigate to the dashboard after sign-up
       } catch (error) {
         console.log(error);
         if (error.code === "auth/email-already-in-use") {
@@ -36,6 +39,7 @@ function Navbar() {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         console.log(userCredential);
         toastMessage = "Welcome"; // Success message for sign-in
+        navigate('/Home'); // Navigate to the dashboard after sign-in
       } catch (error) {
         console.log(error);
         if (error.code === "auth/user-not-found") {

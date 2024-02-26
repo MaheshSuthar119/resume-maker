@@ -1,22 +1,35 @@
+// import './App.css';
+// import App1 from './components/App1';
 
+
+// function App() {
+//   return (
+//     <div className="App">
+//        <App1/>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+import React from 'react';
+import { Route , Routes} from 'react-router-dom';
 import './App.css';
 import App1 from './components/App1';
-// import Body from './components/Body/Body';
-// import AuthDetail from './components/AuthDetail';
-// import Header from './components/Header/Header';
-// import Navbar from './components/Navbar/Navbar';
-
+import Home from './components/Home/Home'; // Import your Home component or any other component you want to redirect to after sign-up/sign-in
 
 function App() {
   return (
-    <div className="App">
-       <App1/>
-       {/* <Navbar/> */}
-       {/* <AuthDetail/> */}
-       {/* <Header/>
-       <Body/> */}
-    </div>
+     
+      <div className="App">
+      <Routes> 
+          <Route exact path="/" element={<App1/>} /> 
+          <Route path="/home" element={<Home/>} />  
+      </Routes>   
+      </div>
+     
   );
 }
 
 export default App;
+
