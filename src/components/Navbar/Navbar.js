@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate  } from 'react-router-dom';
 import style from'./Nav.module.css'
+import 'react-toastify/dist/ReactToastify.css';
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword} from 'firebase/auth'
 import {auth} from '../../Firebase'
 import { toast } from 'react-toastify';
@@ -8,7 +9,7 @@ import { toast } from 'react-toastify';
 function Navbar() {
   const navigate = useNavigate ();
   const notify = () => toast.success();
-
+  
   const [action, setAction] = useState("Sign Up");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +19,7 @@ function Navbar() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     let toastMessage = ''; // Initialize the toast message variable
-    
+     
     // for sign up auth
     if(action === 'Sign Up'){
       try {
@@ -47,6 +48,7 @@ function Navbar() {
         }
       }
       } 
+
       if (toastMessage !== "") {
         toast.dismiss(); // Dismiss any existing toast before showing a new one
         toast(toastMessage); // Show the toast message
@@ -126,6 +128,7 @@ function Navbar() {
         
       </div>
       </form>
+       
     </div>  
     
   )
