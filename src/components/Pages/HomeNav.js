@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React, { useState, useRef} from 'react'
 import ReactToPrint from "react-to-print"
 import { ArrowDown } from "react-feather";
 
@@ -59,9 +59,9 @@ function HomeNav() {
     },
   });
 
-  useEffect(() => {
-    console.log(resumeInformation);
-  }, [resumeInformation]);
+  // useEffect(() => {
+  //   console.log(resumeInformation);
+  // }, [resumeInformation]);
 
   return (
     <div className={styles.container}>

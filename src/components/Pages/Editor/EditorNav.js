@@ -25,6 +25,7 @@ function EditorNav(props) {
       github: activeInformation?.detail?.github || "",
       phone: activeInformation?.detail?.phone || "",
       email: activeInformation?.detail?.email || "",
+      points: []
       
     });
   
@@ -479,6 +480,9 @@ function EditorNav(props) {
           }));
           break;
         }
+        default:
+          // default case code
+          break;
       }
     };
   
@@ -562,11 +566,11 @@ function EditorNav(props) {
         summary: typeof activeInfo?.detail !== "object" ? activeInfo.detail : "",
         other: typeof activeInfo?.detail !== "object" ? activeInfo.detail : "",
       });
-    }, [activeSectionKey]);
+    }, [activeSectionKey, information, sections]);
   
     useEffect(() => {
       setActiveInformation(information[sections[activeSectionKey]]);
-    }, [information]);
+    }, [information, sections, activeSectionKey]);
   
     useEffect(() => {
       const details = activeInformation?.details;
@@ -588,7 +592,7 @@ function EditorNav(props) {
         github: activeInfo.details[activeDetailIndex]?.github || "",
         college: activeInfo.details[activeDetailIndex]?.college || "",
       });
-    }, [activeDetailIndex]);
+    }, [activeDetailIndex, activeInformation?.details, information, sections, activeSectionKey]);
   
     return (
       <div className={styles.container}>
