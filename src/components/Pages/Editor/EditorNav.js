@@ -287,22 +287,22 @@ function EditorNav(props) {
             <label>List your achievements</label>
             <Inputs
               placeholder="Line 1"
-              value={values.points ? values.points[0] : ""}
+              value={values.points ? values.points[0] || "" : ""}
               onChange={(event) => handlePointUpdate(event.target.value, 0)}
             />
             <Inputs
               placeholder="Line 2"
-              value={values.points ? values.points[1] : ""}
+              value={values.points ? values.points[1] || "" : ""}
               onChange={(event) => handlePointUpdate(event.target.value, 1)}
             />
             <Inputs
               placeholder="Line 3"
-              value={values.points ? values.points[2] : ""}
+              value={values.points ? values.points[2]  || "" : ""}
               onChange={(event) => handlePointUpdate(event.target.value, 2)}
             />
             <Inputs
               placeholder="Line 4"
-              value={values.points ? values.points[3] : ""}
+              value={values.points ? values.points[3] || "" : ""}
               onChange={(event) => handlePointUpdate(event.target.value, 3)}
             />
           </div>
@@ -312,7 +312,7 @@ function EditorNav(props) {
       <div className={styles.detail}>
         <Inputs
           label="Summary"
-          value={values.summary}
+          value={values.summary || ""}
           placeholder="Enter your objective/summary"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, summary: event.target.value }))
@@ -324,7 +324,7 @@ function EditorNav(props) {
       <div className={styles.detail}>
         <Inputs
           label="Other"
-          value={values.other}
+          value={values.other || ""}
           placeholder="Enter something"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, other: event.target.value }))
