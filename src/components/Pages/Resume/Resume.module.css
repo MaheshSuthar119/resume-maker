@@ -46,7 +46,7 @@
     cursor: pointer;
   } 
     
-  /* .header .link svg {
+  .header .link svg {
     color: var(--color);
     height: 16px;
     width: 16px;
@@ -75,9 +75,9 @@
     font-weight: bold;
     width: 100%;
     border-bottom: 2px solid #000;
-  } */
+  }
   
-  /* .section .content {
+  .section .content {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -92,9 +92,9 @@
   }
   .section .content .item:last-child {
     border-bottom: none;
-  } */
+  }
   
-  /* .content .title {
+  .content .title {
     font-weight: 500;
     font-size: 1rem;
     line-height: 1.3rem;
@@ -148,4 +148,4 @@
   .hidden {
     display: none;
   }
-   */
+  

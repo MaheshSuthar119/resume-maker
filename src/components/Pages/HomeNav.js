@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
+import ReactToPrint from "react-to-print"
 import { ArrowDown } from "react-feather";
 
 import styles from "./HomeNav.module.css";
@@ -17,6 +18,8 @@ function HomeNav() {
     other: "Other",
   };
   
+  const resumeRef = useRef();
+
   const [activeColor, setActiveColor] = useState(colors[0]);
   const [resumeInformation, setResumeInformation] = useState({
     [sections.basicInfo]: {
@@ -76,7 +79,16 @@ function HomeNav() {
                     />
                 ))}
             </div>
-            <button>Download <ArrowDown /> </button>
+            <ReactToPrint
+          trigger={() => {
+            return (
+              <button>
+                Download <ArrowDown />
+              </button>
+            );
+          }}
+          content={() => resumeRef.current}
+        />
         </div>
         <div className={styles.main}>
           <EditorNav
@@ -84,7 +96,12 @@ function HomeNav() {
             information = {resumeInformation}
             setInformation={setResumeInformation}
           />
-          <Resume/>
+           <Resume
+          ref={resumeRef}
+          sections={sections}
+          information={resumeInformation}
+          activeColor={activeColor}
+        />
         </div>
     </div>
   )
