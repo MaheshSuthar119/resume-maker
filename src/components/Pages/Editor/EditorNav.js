@@ -577,22 +577,24 @@ function EditorNav(props) {
       if (!details) return;
   
       const activeInfo = information[sections[activeSectionKey]];
-      setValues({
-        overview: activeInfo.details[activeDetailIndex]?.overview || "",
-        link: activeInfo.details[activeDetailIndex]?.link || "",
-        certificationLink:
-          activeInfo.details[activeDetailIndex]?.certificationLink || "",
-        companyName: activeInfo.details[activeDetailIndex]?.companyName || "",
-        location: activeInfo.details[activeDetailIndex]?.location || "",
-        startDate: activeInfo.details[activeDetailIndex]?.startDate || "",
-        endDate: activeInfo.details[activeDetailIndex]?.endDate || "",
-        points: activeInfo.details[activeDetailIndex]?.points || "",
-        title: activeInfo.details[activeDetailIndex]?.title || "",
-        linkedin: activeInfo.details[activeDetailIndex]?.linkedin || "",
-        github: activeInfo.details[activeDetailIndex]?.github || "",
-        college: activeInfo.details[activeDetailIndex]?.college || "",
-      });
-    }, [activeDetailIndex, activeInformation?.details, information, sections, activeSectionKey]);
+      const activeDetail = activeInfo?.details?.[activeDetailIndex] || {};
+
+      setValues((prevValues) => ({
+        ...prevValues,
+        overview: activeDetail.overview || "",
+        link: activeDetail.link || "",
+        certificationLink: activeDetail.certificationLink || "",
+        companyName: activeDetail.companyName || "",
+        location: activeDetail.location || "",
+        startDate: activeDetail.startDate || "",
+        endDate: activeDetail.endDate || "",
+        points: activeDetail.points || "",
+        title: activeDetail.title || "",
+        linkedin: activeDetail.linkedin || "",
+        github: activeDetail.github || "",
+        college: activeDetail.college || "",
+      }));
+    }, [activeDetailIndex, activeInformation, information, sections, activeSectionKey]);
   
     return (
       <div className={styles.container}>

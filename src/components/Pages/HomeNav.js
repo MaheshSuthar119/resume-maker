@@ -17,7 +17,6 @@ function HomeNav() {
     summary: "Summary",
     other: "Other",
   };
-  
   const resumeRef = useRef();
 
   const [activeColor, setActiveColor] = useState(colors[0]);
@@ -59,27 +58,23 @@ function HomeNav() {
     },
   });
 
-  // useEffect(() => {
-  //   console.log(resumeInformation);
-  // }, [resumeInformation]);
-
   return (
     <div className={styles.container}>
       <p className={styles.heading}>Resume Builder</p>
-        <div className={styles.toolbar}>
-            <div className={styles.colors}>
-                {colors.map((item) => (
-                    <span
-                      key={item}
-                      style={{backgroundColor: item}}
-                      className={`${styles.color} ${
-                        activeColor === item ? styles.active : ""
-                      }`}
-                      onClick={() => setActiveColor(item)}
-                    />
-                ))}
-            </div>
-            <ReactToPrint
+      <div className={styles.toolbar}>
+        <div className={styles.colors}>
+          {colors.map((item) => (
+            <span
+              key={item}
+              style={{ backgroundColor: item }}
+              className={`${styles.color} ${
+                activeColor === item ? styles.active : ""
+              }`}
+              onClick={() => setActiveColor(item)}
+            />
+          ))}
+        </div>
+        <ReactToPrint
           trigger={() => {
             return (
               <button>
@@ -89,22 +84,22 @@ function HomeNav() {
           }}
           content={() => resumeRef.current}
         />
-        </div>
-        <div className={styles.main}>
-          <EditorNav
-            sections={sections}
-            information = {resumeInformation}
-            setInformation={setResumeInformation}
-          />
-           <Resume
+      </div>
+      <div className={styles.main}>
+        <EditorNav
+          sections={sections}
+          information={resumeInformation}
+          setInformation={setResumeInformation}
+        />
+        <Resume
           ref={resumeRef}
           sections={sections}
           information={resumeInformation}
           activeColor={activeColor}
         />
-        </div>
+      </div>
     </div>
-  )
+  );
 }
 
 export default HomeNav

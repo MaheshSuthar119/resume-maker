@@ -290,11 +290,11 @@ const Resume = forwardRef((props, ref) => {
       [sections.project, sections.education, sections.summary],
       [sections.workExp, sections.achievement, sections.other],
     ]);
-  }, []);
+  }, [sections.project, sections.education, sections.summary,sections.workExp, sections.achievement, sections.other]);
 
   useEffect(() => {
     swapSourceTarget(source, target);
-  }, [source]);
+  }, [source, target]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -312,28 +312,28 @@ const Resume = forwardRef((props, ref) => {
 
           <div className={styles.links}>
             {info.basicInfo?.detail?.email ? (
-              <a className={styles.link} type="email">
+              <a className={styles.link} type="email" href="#">
                 <AtSign /> {info.basicInfo?.detail?.email}
               </a>
             ) : (
               <span />
             )}
             {info.basicInfo?.detail?.phone ? (
-              <a className={styles.link}>
+              <a className={styles.link} href="#">
                 <Phone /> {info.basicInfo?.detail?.phone}
               </a>
             ) : (
               <span />
             )}
             {info.basicInfo?.detail?.linkedin ? (
-              <a className={styles.link}>
+              <a className={styles.link} href="#">
                 <Linkedin /> {info.basicInfo?.detail?.linkedin}
               </a>
             ) : (
               <span />
             )}
             {info.basicInfo?.detail?.github ? (
-              <a className={styles.link}>
+              <a className={styles.link} href="#">
                 <GitHub /> {info.basicInfo?.detail?.github}
               </a>
             ) : (
